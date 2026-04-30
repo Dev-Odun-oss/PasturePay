@@ -1,9 +1,9 @@
 ````markdown
-# StellarKraal
+# pasture pay
 
 ## Livestock-Backed Decentralized Micro-Lending Platform on Stellar
 
-StellarKraal is a decentralized finance (DeFi) platform designed to provide accessible financial services to farmers and livestock owners by enabling them to tokenize livestock assets and use them as collateral for instant micro-loans.
+pastute pay is a decentralized finance (DeFi) platform designed to provide accessible financial services to farmers and livestock owners by enabling them to tokenize livestock assets and use them as collateral for instant micro-loans.
 
 Built on the Stellar blockchain using Soroban smart contracts, the platform allows users to mint livestock-backed NFTs representing real-world agricultural assets such as cattle, goats, sheep, and poultry. These tokenized assets can then be locked as collateral to obtain USDC loans without relying on traditional banking systems.
 
