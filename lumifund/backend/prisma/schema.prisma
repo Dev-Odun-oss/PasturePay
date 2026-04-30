@@ -1,0 +1,51 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Campaign {
+  id            Int            @id @default(autoincrement())
+  contractId    BigInt         @unique // on-chain campaign id
+  creator       String
+  goal          BigInt
+  raised        BigInt         @default(0)
+  tokenAddress  String
+  status        CampaignStatus @default(ACTIVE)
+  milestones    Milestone[]
+  contributions Contribution[]
+  createdAt     DateTime       @default(now())
+}
+
+model Milestone {
+  id          Int      @id @default(autoincrement())
+  campaign    Campaign @relation(fields: [campaignId], references: [id])
+  campaignId  Int
+  index       Int
+  description String
+  targetPct   Int
+  votesFor    Int      @default(0)
+  votesAgainst Int     @default(0)
+  released    Boolean  @default(false)
+}
+
+model Contribution {
+  id           Int      @id @default(autoincrement())
+  contractId   BigInt   @unique // on-chain contribution id
+  campaign     Campaign @relation(fields: [campaignId], references: [id])
+  campaignId   Int
+  contributor  String
+  amount       BigInt
+  refunded     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+}
+
+enum CampaignStatus {
+  ACTIVE
+  SUCCESSFUL
+  FAILED
+}
